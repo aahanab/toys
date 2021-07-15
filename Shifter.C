@@ -139,7 +139,7 @@ TVector3 Shifter::Shift(TVector3 position){
    r=20.0;
   
    Shifter *test= new Shifter ("apples/user/FunForAll/Desktop/apples.root");
-   TH1F * hXposition=new TH1F("hXPosition","1D ", 100,0,80.0);// 100 bins, from 0.0 to 80.0
+   TH1F * hXposition=new TH1F("hXposition","1D ", 100,0,80.0);// 100 bins, from 0.0 to 80.0
 
 
 
@@ -148,7 +148,7 @@ TVector3 Shifter::Shift(TVector3 position){
    TVector3 pos(r, 10, 50);
    TVector3 newpos=test->ShiftForward(pos);
      float deltax= newpos.X()-pos.X();
-     hXPosition->Fill(deltax);
+     hXposition->Fill(deltax);
    }
    
   hXposition->Draw();
