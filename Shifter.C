@@ -1,7 +1,7 @@
 //gently modified from Sara Kurdi's Shifter code, for use in stand-alone handling of distortion maps.
 class Shifter {
 public:
-  Shifter(TString truthfilename);
+  Shifter(TString truthfilename, TString correctionfilename);
   TVector3 Shift(TVector3 position);
   TVector3 ShiftForward(TVector3 position); //only shift with forward histogram
   TVector3 ShiftBack(TVector3 position); //
@@ -131,3 +131,30 @@ TVector3 Shifter::Shift(TVector3 position){
   
   return ShiftBack(ShiftForward(position));
 }
+
+
+
+ void testshifter() {
+   float phi, r , z;
+   r=20.0;
+  
+   Shifter *test= new Shifter ("apples/user/FunForAll/Desktop/apples.root");
+   TH1F * hXposition=new TH1F("hXPosition","1D ", 100,0,80.0);// 100 bins, from 0.0 to 80.0
+
+
+
+
+   for( r=20.0; r<=30; r++){ 
+   TVector3 pos(r, 10, 50);
+   TVector3 newpos=test->ShiftForward(pos);
+     float deltax= newpos.X()-pos.X();
+     hXPosition->Fill(deltax);
+   }
+   
+  hXposition->Draw();
+   
+   
+   
+   
+   
+  } //func
