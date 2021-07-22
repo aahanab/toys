@@ -39,21 +39,21 @@ Shifter::Shifter(TString truthfilename, TString correctionfilename=""){
    //single event distortion file
   hasCorrection=false;//assume the file doesn't load correctly, until we prove otherwise.
   average=NULL;
-  hX=NULL;hY=NULL;hZ=NULL;
+  hXave=NULL;hYave=NULL;hZave=NULL;
   if (correctionfilename!=""){
     //average=TFile::Open(correctionfilename,"READ");
      average=TFile::Open("/phenix/u/hpereira/sphenix/work/g4simulations/distortion_maps_rec/Distortions_full_realistic_micromegas_all-coarse.root","READ");
-    if (forward!=NULL){
-      hXave=(TH3F*)forward->Get("hIntDistortionX");
-      hYave=(TH3F*)forward->Get("hIntDistortionY");
-      hZave=(TH3F*)forward->Get("hIntDistortionZ");
-       hZave=(TH3F*)average->Get("hIntDistortionZ");
+    if (average!=NULL){
+      hXave=(TH3F*)average->Get("hIntDistortionX");
+      hYave=(TH3F*)average->Get("hIntDistortionY");
+      hZave=(TH3F*)average->Get("hIntDistortionZ");
+     
   
   hRave=(TH3F*)average->Get("hIntDistortionR");
   hPhiave=(TH3F*)average->Get("hIntDistortionP");
     }
   }
-  if (hX!=NULL && hY!=NULL && hZ!=NULL){
+  if (hXave!=NULL && hYave!=NULL && hZave!=NULL){
     hasCorrection=true;
   }
 
