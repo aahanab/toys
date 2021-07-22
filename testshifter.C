@@ -139,20 +139,20 @@ TVector3 Shifter::Shift(TVector3 position){
    r=20.0;
   
    Shifter *test= new Shifter ("apples/user/FunForAll/Desktop/apples.root");
-   TH1F * hXposition= new TH1F("hXposition","Shift in x Position", 100,0,80.0);// 100 bins, from 0.0 to 80.0
-  // TH1F * hRposition= new TH1F("hRposition","Shift in Radial Posiition" , 100, 20.0, 30.0); 
+  // TH1F * hXposition= new TH1F("hXposition","Shift in x Position", 100,0,80.0);// 100 bins, from 0.0 to 80.0
+  TH1F * hRposition= new TH1F("hRposition","Shift in Radial Posiition" , 100, 20.0, 30.0); 
 
    for( r=20.0; r<=30; r++){ 
    TVector3 pos(r, 10, 50);
    TVector3 newpos=test->ShiftForward(pos);
-     float deltax= newpos.X()-pos.X();
-  //   float deltar=newpos.R()-pos.R();
-     hXposition->Fill(deltax);
-   //  hRposition->Fill(deltar);
+    // float deltax= newpos.X()-pos.X();
+  float deltar=newpos.R()-pos.R();
+  //   hXposition->Fill(deltax);
+     hRposition->Fill(deltar);
    }
    
-  hXposition->Draw();
-//  hRposition->Draw(); 
+  //hXposition->Draw();
+ hRposition->Draw(); 
    
    
    
