@@ -138,7 +138,8 @@ TVector3 Shifter::Shift(TVector3 position){
    float phi, r , z;
    r=20.0;
   
-   Shifter *test= new Shifter ("apples/user/FunForAll/Desktop/apples.root");
+  Shifter *test= new Shifter ("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root
+");
   TH1F * hXposition= new TH1F("hXposition","Shift in x Position", 100,0,80.0);// 100 bins, from 0.0 to 80.0
  // TH1F * hRposition= new TH1F("hRposition","Shift in Radial Posiition" , 100, 20.0, 30.0); 
 
@@ -146,7 +147,7 @@ TVector3 Shifter::Shift(TVector3 position){
    TVector3 pos(r, 10, 50);
    TVector3 newpos=test->ShiftForward(pos);
    float deltax= newpos.X()-pos.X();
-  //float deltar=newpos.R()-pos.R();
+  //float deltar=newpos.X()-pos.X();
    hXposition->Fill(deltax);
     // hRposition->Fill(deltar);
    }
