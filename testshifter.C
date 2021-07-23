@@ -152,6 +152,7 @@ TVector3 Shifter::Shift(TVector3 position){
    }
    
   hXposition->Draw();
+   hXposition->Print();
  //hRposition->Draw(); 
    
    
