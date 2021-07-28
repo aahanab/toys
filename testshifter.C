@@ -141,7 +141,7 @@ TVector3 Shifter::Shift(TVector3 position){
    Shifter *test= new Shifter ("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root");
  //  TH1F * hXposition= new TH1F("hXposition","Shift in x Position", 100,0,80.0);// 100 bins, from 0.0 to 80.0
   // TH1F * hRposition= new TH1F("hRposition","Shift in Radial Posiition" , 100, 20.0, 30.0); 
-    TH2F *hRposition2d = new TH2F("hRposition2d","2D plot of shift in radial position",100,20.0,30.0,50,10.0,60.0);
+    TH2F *hRposition2d = new TH2F("hRposition2d","2D plot of shift in radial position",100,20.0,70.0,100,10.0,90.0);
 
    for( r=20.0; r<=30; r++){ 
    TVector3 pos(r, 10, 50);
