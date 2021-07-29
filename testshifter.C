@@ -141,10 +141,13 @@ TVector3 Shifter::Shift(TVector3 position){
    Shifter *test= new Shifter ("/sphenix/user/rcorliss/distortion_maps/2021.04/apr07.average.real_B1.4_E-400.0.ross_phi1_sphenix_phislice_lookup_r26xp40xz40.distortion_map.hist.root");
  //  TH1F * hXposition= new TH1F("hXposition","Shift in x Position", 100,0,80.0);// 100 bins, from 0.0 to 80.0
   // TH1F * hRposition= new TH1F("hRposition","Shift in Radial Posiition" , 100, 20.0, 30.0); 
-    TH2F *hRposition2d = new TH2F("hRposition2d","2D plot of shift in radial position ; radial position(cm); radial shift(cm)",50,20.0,200.0,50,-2,2);
+    TH2F *hRposition2d = new TH2F("hRposition2d","2D plot of shift in radial position ; radial position(cm); radial shift(cm)",50,20.0,80.0,50,-2,2);
 
-   for( r=20.0; r<=30; r++){ 
-   TVector3 pos(r, 10, 50);
+   for( r=20.0; r<=75; r=r+0.1){ 
+     for(phi=0.0; phi<=6.0; phi=phi+0.1){
+   TVector3 pos(20, 10, 50);
+   pos.SetPhi(phi);
+   pos.SetPerp(r);
    TVector3 newpos=test->ShiftForward(pos);
    float r= pos.Perp();
    float deltax= newpos.X()-pos.X();
@@ -155,11 +158,11 @@ TVector3 Shifter::Shift(TVector3 position){
    //hRposition->Fill(deltar);
      hRposition2d->Fill(r,deltar);
    }
-   
+   }
   //hXposition->Draw();
    
   //hRposition->Draw();
-   hRposition2d->Draw();
+   hRposition2d->Draw("colz");
    
    
    
